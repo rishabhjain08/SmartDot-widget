@@ -1,0 +1,51 @@
+<html>
+	<head>
+		<title>queries</title>
+		<script src="http://yui.yahooapis.com/3.4.1/build/yui/yui-min.js"></script>
+		</head>
+	
+	<body>
+			<p><label for="query">Enter Location:</label><input id="query" type="text"/></p>
+			<p><button id="submit" type="submit" value="Make Query" onclick="locate()" >Make Query</button></p>
+		<div id="res"></div>
+		<div id="arbit"></div>
+	<script>
+			function locate(){
+				YUI().use('node', 'yql', function(Y) {
+    
+			var res = Y.one('#res'),
+				zip = document.getElementById('query');var term=zip.value;
+				
+			
+			
+			Y.YQL("SELECT * from geo.places WHERE text='"+term+"'", function(r) {
+			
+			if (r.query && r.query.results ){
+				var html = "";	
+				var places = r.query.results.place;
+				Y.log(r);
+				 Y.each(places, function(v, k){
+					var content= "Country"+v.country.content+"latitude :"+v.centroid.latitude+" longitutde:"+v.centroid.longitude+"  ";
+					var foo1 = "<div class='mod'><b>"+content+"</b></div>"
+					html = html + foo1;
+					});
+					console.log(res);
+					res.setContent(html);
+				
+			}
+				
+			
+			});
+			
+			
+			
+			
+			});
+			
+			}
+	
+	</script>
+
+
+	</body>
+</html>

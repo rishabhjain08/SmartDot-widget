@@ -1,0 +1,78 @@
+<html>
+	<head>
+		<title>movie Review</title>
+		<script src="http://yui.yahooapis.com/3.4.1/build/yui/yui-min.js"></script>
+		</head>
+	
+	<body>
+			<p><label for="query">Enter MOvie:</label><input id="query" type="text"/></p>
+			<p><button id="submit" type="submit" value="Make Query" onclick="locate()" >Search similar songs </button></p>
+		<div id="res"></div>
+		<div id="arbit"></div>
+	<script>
+			function locate(){
+				YUI().use('node', 'yql', function(Y) {
+    
+			var res = Y.one('#res'),
+				zip = document.getElementById('query');var term=zip.value;
+				
+			
+			
+			Y.YQL("SELECT * FROM amazon.ecs WHERE AWSAccessKeyId='AKIAIIG7UJWTQYBMR33Q' AND secret='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' AND ResponseGroup='Large' AND Title='"+term+"%' AND SearchIndex = 'Video'", function(r) {
+			
+			if (r.query && r.query.results ){
+			
+				Y.log(r);
+				
+				var html = "";	
+				var Title = r.query.results.Item[0].ItemAttributes.Title;
+				html=html+"<div id='title'><h2>"+Title+"<h2></div>";
+				var Source = r.query.results.Item[0].EditorialReviews.EditorialReview[0].Source;
+				var content = r.query.results.Item[0].EditorialReviews.EditorialReview[0].Content;
+				console.log(Source);
+			//alert(content); 	
+			/*	
+				Y.each(directories, function(v, k){
+				var title=v.ItemAttributes.Title;
+				if(v.EditorialReviews!=undefined){
+					if(v.EditorialReviews.EditorialReview!=undefined){
+				var review=v.EditorialReviews.EditorialReview;	
+				
+				Y.each(review,function(v1,k1){
+				
+				var source=v1.Source;
+				var reviews=v1.Content;
+				
+				var content= "<div><div class='source'>"+source+"</div><div class='reviews'>"+reviews+"</div>";
+				
+				html=html+content;
+				
+				
+				});
+				}
+				}
+				
+				 });
+				 */
+				html=html+"<div><div class='source'><h3>SOURCE:"+Source+"</h3></div><div class='reviews'>"+content+"</div>";
+				
+					console.log(html);
+					res.setContent(html);	
+				
+			}
+				
+			
+			});
+			
+			
+			
+			
+			});
+			
+			}
+	
+	</script>
+
+
+	</body>
+</html>

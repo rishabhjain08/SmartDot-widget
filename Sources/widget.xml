@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+<name>Smart Dot</name>
+<version>1.0</version>
+<image usage="dock" src="images/hdpi/dolphin.png"/>
+<image usage="security"
+src="images/hdpi/dolphin.png"/>
+<author name="Sudoers" organization="Stud! Inc."
+href="http://www.cse.iitd.ac.in"/>
+<copyright>(c) 2010-2011 Stud! Inc.</copyright>
+<description>This is a really cool Widget!</description>
+<platform minVersion="4.0" ></platform>
+</metadata>
