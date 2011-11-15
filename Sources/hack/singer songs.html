@@ -1,0 +1,59 @@
+<html>
+	<head>
+		<title>Artist's Song Search</title>
+		<script src="http://yui.yahooapis.com/3.4.1/build/yui/yui-min.js"></script>
+		</head>
+	
+	<body>
+			<p><label for="query">Enter Artist Name:</label><input id="query" type="text"/></p>
+			<p><button id="submit" type="submit" value="Make Query" onclick="locate()" >Search songs by this artist</button></p>
+		<div id="res"></div>
+		<div id="arbit"></div>
+	<script>
+			function locate(){
+				YUI().use('node', 'yql', function(Y) {
+    
+			var res = Y.one('#res'),
+				zip = document.getElementById('query');var str=zip.value;
+				var term=str.replace(" ","+");
+				
+			
+			
+			Y.YQL("select * from json where url='http://developer.echonest.com/api/v4/song/search?api_key=N6E4NIOVYMTHNDM8J&artist="+term+"' and itemPath =''" , function(r) {
+			
+			if (r.query && r.query.results ){
+				Y.log(r);
+				var html = "";	
+				var places = r.query.results.response.songs;
+				Y.each(places, function(v, k){
+				var content= v.title;
+				var foo1 = "<div class='mod'><b>"+content+"</b></div>"
+					html = html + foo1;
+				
+				
+				
+				
+				
+				
+				});
+				
+					console.log(res);
+					res.setContent(html);	
+				
+			}
+				
+			
+			});
+			
+			
+			
+			
+			});
+			
+			}
+	
+	</script>
+
+
+	</body>
+</html>

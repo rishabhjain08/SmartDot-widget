@@ -1,0 +1,34 @@
+<html>
+	<head>
+		<title>queries</title>
+		<script src="http://yui.yahooapis.com/3.4.1/build/yui/yui-min.js"></script>
+		</head>
+	
+	<body>
+		<form id="geosearch">
+			<p><label for="query">Enter Location:</label><input id="query" type="text"/></p>
+			<p><input type="submit" value="Make Query" onclick = "locate()"/></p>
+		</form>
+		<div id="res"></div>
+		<div id="arbit"></div>
+	<script>
+		YUI().use('node', 'yql');
+		YUI().use('node', 'yql', function(Y) {
+    
+			var res = Y.one('#res'),
+				zip = '90210';
+			
+			Y.YQL('select * from weather.forecast where location=' + zip, function(r) {
+				var el = Y.Node.create('<div class="mod"></div>');
+
+				el.set('innerHTML', '<h2>Weather for ' + zip + '</h2>' + r.query.results.channel.item.description);
+
+				res.setContent(el);
+			
+			});
+		});
+	</script>
+
+
+	</body>
+</html>

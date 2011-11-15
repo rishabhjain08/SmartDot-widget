@@ -1,0 +1,26 @@
+<html>
+	<head>
+		<title>Simple Search</title>
+		<script src="http://yui.yahooapis.com/3.4.1/build/yui/yui-min.js"></script>
+		</head>
+	
+	<body>
+			<p><label for="query">Enter Word:</label><input id="query" type="text"/></p>
+			<p><button id="submit" type="submit" value="Make Query" onclick="lyrics()" >Search </button></p>
+		<div id="res"></div>
+		<div id="arbit"></div>
+	<script>
+			function lyrics(){
+			zip = document.getElementById('query');var term=zip.value;
+			
+			var str = term.replace(" ","+");
+			var str1= "http://www.wolframalpha.com/input/?i="+str+"";
+			window.open(str1);
+			
+			}
+	
+	</script>
+
+
+	</body>
+</html>

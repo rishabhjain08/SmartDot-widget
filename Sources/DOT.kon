@@ -1,0 +1,68 @@
+﻿<widget>
+
+
+<script src="js/yui.js"></script>
+<script src="hack/search.js"></script>
+<script src="js/drag-drop.js"></script>
+
+<window id="main_window" name="title"
+title="Sample Yahoo! Widget"
+width="500" height="1000">
+
+<image id="dropbox" name="dropbox"
+src="Images/bcircle.png"
+hOffset="250" vOffset="250"
+hAlign="center" opacity="50%" onClick="hideAll()" onDragDrop="itemDropped()" onDragEnter="itemEntered()" onDragExit="itemExited()">
+</image>
+
+<frame name="musiclist" id="musiclist" hOffset="135" vOffset="500" opacity="0%">
+
+<image src="images/textback.png" width="110"  height="50"></image>
+<text  id="mA" vOffset="29" hOffset="55" hAlign="center"  style="font-size:12px; font-weight: bold" onClick="trackInfo()" >Get Track Info</text>
+
+<image src="images/textback.png"  hOffset="121" width="110"  height="50"></image>
+<text  id="mB" vOffset="29" hOffset="176"  hAlign="center" style="font-size:12px; font-weight: bold" onClick="lyricsFetch()" >Fetch Lyrics</text>
+
+<image src="images/textback.png" width="110"  vOffset="60" height="50"></image>
+<text  id="mD" vOffset="89" hOffset="55" hAlign="center"  style="font-size:12px; font-weight: bold" onClick="likeArtist()" >I like the Artist</text>
+
+<image src="images/textback.png"  hOffset="121" vOffset="60" width="110"  height="50"></image>
+<text  id="mE" vOffset="89" hOffset="176"  hAlign="center" style="font-size:12px; font-weight: bold" onClick="peoplelike()" >People's Like</text>
+
+<web url="" name="mwebObj" id="mwebObj" width="231" height="200" vOffset="120" onClick="reSize()" opacity="0%"/>
+
+</frame> 
+
+
+<frame name="videolist" id="videolist" hOffset="135" vOffset="500" opacity="0%">
+
+<image src="images/textback.png"  vOffset="0" width="231"  height="50"></image>
+<text  id="vA" vOffset="29" hOffset="118" hAlign="center" style="font-size:13px; font-weight: bold" onClick="moviereview()" >Reviews</text>
+
+<image src="images/textback.png"  vOffset="60" width="231"  height="50"></image>
+<text  id="vB" vOffset="89" hOffset="118" hAlign="center" style="font-size:13px; font-weight: bold" onClick="similarMovies()" >Similar Movies</text>
+
+<web url="" name="vwebObj" id="vwebObj" width="231" height="200" vOffset="120" onClick="reSize()" opacity="0%"/>
+
+</frame> 
+
+
+<frame name="textlist" id="textlist" hOffset="135" vOffset="500" opacity="0%">
+<image src="images/textback.png"  vOffset="0" width="231"  height="50"  onClick="onlineSearch()"></image>
+<text  id="tA" vOffset="29" hOffset="118" hAlign="center" style="font-size:13px; font-weight: bold" >Online Search</text>
+
+<image src="images/textback.png"  vOffset="60" width="231"  height="50"></image>
+<text  id="tB" vOffset="89" hOffset="118" hAlign="center" style="font-size:13px; font-weight: bold" onClick="semanticSearch()" >Semantic Search</text>
+
+<web url="" name="twebObj" id="twebObj" width="231" height="200" vOffset="120" onClick="reSize()" opacity="0%"/>
+</frame> 
+
+<frame name="backitup" id="backitup" hOffset="135" vOffset="500" opacity="0%">
+<image src="images/textback.png"  vOffset="0" width="231"  height="50"></image>
+<text  id="bA" vOffset="29" hOffset="118" hAlign="center" style="font-size:13px; font-weight: bold" onClick="backdata()" >Backup my Data</text>
+</frame> 
+
+
+</window>
+
+</widget>

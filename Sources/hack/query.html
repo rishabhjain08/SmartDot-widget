@@ -1,0 +1,46 @@
+<html>
+	<head>
+		<title>Extracting queries</title>
+		<script src="http://yui.yahooapis.com/3.4.1/build/yui/yui-min.js"></script>
+		</head>
+	
+	<body>
+		<form id="geosearch">
+			<p><label for="query">Enter Location:</label><input id="query" type="text"/></p>
+			<p><input type="submit" value="Make Query" onclick = "locate()"/></p>
+		</form>
+		<div id="results"></div>
+		<div id="arbit"></div>
+
+		<script>
+		
+			var search = document.getElementById('query'),
+				term = search.value;
+			
+			function locate(){
+			document.getElementById("arbit").write='arbit is written';
+			YUI().use('yql','node', function(Y) {
+				
+
+				var yql_query = "SELECT * from geo.places WHERE text='"+term+"'";
+				
+				Y.YQL(yql_query, function(r){
+				Y.log(r);
+				if (r.query && r.query.results){
+					var place= yql_query.results.place;
+					content = '<ul><li><strong>Place Name: </strong>' + name + '</li>';
+					
+					document.getElementById('results').innerHTML = content;
+				}
+				
+				
+				});
+
+			});
+		
+		}
+		</script>
+
+
+	</body>
+</html>
